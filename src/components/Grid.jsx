@@ -2,9 +2,15 @@ function Grid() {
   const styling =
     "rounded-2xl overflow-hidden bg-[#171717] border border-transparent hover:bg-[#222] hover:border-[#636363] hover:scale-101 duration-300";
 
+  // Below xl, every card is fluid and fills its grid cell (no fixed max-width,
+  // no centering), so edges and gaps stay aligned at any width.
+  // The fixed pixel sizes and manual offsets only apply at xl, where the
+  // 6 x 200px grid is used.
   return (
-    <div className="grid grid-cols-[repeat(6,200px)] gap-4">
-      <div className={`row-span-1 h-[150px] w-[150px] ml-[2rem] ${styling}`}>
+    <div className="grid w-full max-w-[80rem] mx-auto px-4 sm:px-6 xl:px-0 gap-4 grid-cols-2 sm:grid-cols-4 xl:grid-cols-[repeat(6,200px)]">
+      <div
+        className={`relative w-full aspect-square xl:justify-self-start xl:w-[150px] xl:h-[150px] xl:aspect-auto xl:ml-[2rem] ${styling}`}
+      >
         <img
           src="images/grid/image1.jpg"
           alt="gridimage1"
@@ -12,7 +18,9 @@ function Grid() {
         />
       </div>
 
-      <div className={`row-span-1 h-[150px] w-[150px] relative right-4 ${styling}`}>
+      <div
+        className={`relative w-full aspect-square xl:justify-self-start xl:w-[150px] xl:h-[150px] xl:aspect-auto xl:right-4 ${styling}`}
+      >
         <img
           src="images/grid/image2.png"
           alt="gridimage2"
@@ -20,18 +28,23 @@ function Grid() {
         />
       </div>
 
-      <div className={`row-span-2 col-span-3 h-[546px] relative right-[3.5rem] ${styling}`}>
+      {/* Big card: stretches across the two rows it spans between sm and xl */}
+      <div
+        className={`relative col-span-2 sm:row-span-2 xl:col-span-3 h-[546px] sm:h-auto sm:min-h-[546px] xl:h-[546px] xl:right-[3.5rem] ${styling}`}
+      >
         <img
           src="images/grid/image3.png"
           alt="gridimage1"
-          className="ml-[3rem] mt-[7rem] object-cover scale-110 absolute bottom-2"
+          className="ml-[3rem] mt-[7rem] object-cover scale-110 absolute bottom-2 max-w-[calc(100%-4rem)] xl:max-w-none"
         />
         <p className="absolute bottom-[2rem] ml-[2rem] text-[12px] font-semibold">
           Unified cross-platform experience
         </p>
       </div>
 
-      <div className={`col-span-2 mb-2 h-[380px] w-[330px] ml-[1.8rem] relative flex items-center ${styling}`}>
+      <div
+        className={`relative col-span-2 h-[380px] w-full flex items-center xl:justify-self-start xl:w-[330px] xl:ml-[1.8rem] xl:mb-2 ${styling}`}
+      >
         <div className="flex gap-3 mb-[8rem] animate-[slide_9s_infinite]">
           <img
             src="images/grid/grid-marquee/image-1.jpg"
@@ -69,7 +82,9 @@ function Grid() {
         </p>
       </div>
 
-      <div className={`col-span-3 h-[250px] relative w-[480px] ml-[2rem] text-white ${styling}`}>
+      <div
+        className={`relative col-span-2 xl:col-span-3 h-[250px] w-full text-white xl:justify-self-start xl:w-[480px] xl:ml-[2rem] ${styling}`}
+      >
         <marquee behavior="scroll" direction="left" scrollamount="3">
           <div className="flex gap-2">
             <img
@@ -115,7 +130,9 @@ function Grid() {
         </p>
       </div>
 
-      <div className={`col-span-3 h-[250px] w-[477px] relative right-[7rem] overflow-hidden ${styling}`}>
+      <div
+        className={`relative col-span-2 xl:col-span-3 h-[250px] w-full overflow-hidden xl:justify-self-start xl:w-[477px] xl:right-[7rem] ${styling}`}
+      >
         <img
           src="images/grid/image6.png"
           alt="gridimage6"

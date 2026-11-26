@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState } from "react";
@@ -37,31 +36,40 @@ function ExperienceCard() {
   );
 
   return (
-    <div className="flex flex-col items-center mt-16">
+    <div className="flex flex-col items-center mt-16 w-full px-4 sm:px-6">
 
-      <div className="flex flex-col md:flex-row gap-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-4 xl:gap-6 w-full max-w-[66rem]">
 
         {experiences.map((item) => (
           <div
             key={item.id}
+            role="button"
+            tabIndex={0}
+            aria-pressed={selected === item.id}
             onClick={() => setSelected(item.id)}
-            className={`bg-[#1b1c1d] w-[16rem] gap-4 p-5 rounded-3xl flex items-center cursor-pointer border transition-all duration-300 ${
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setSelected(item.id);
+              }
+            }}
+            className={`bg-[#1b1c1d] w-full min-w-0 gap-3 sm:gap-4 p-4 sm:p-5 rounded-3xl flex items-center cursor-pointer border transition-all duration-300 select-none active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 ${
               selected === item.id
                 ? "border-white text-white"
-                : "border-white/20 text-gray-300"
+                : "border-white/20 text-gray-300 hover:border-white/40"
             }`}
           >
             <img
               src={item.icon}
               alt={`feature-${item.id}`}
-              className={`transition-opacity duration-300 ${
+              className={`w-9 h-9 sm:w-10 sm:h-10 shrink-0 object-contain transition-opacity duration-300 ${
                 selected === item.id
                   ? "opacity-100"
                   : "opacity-70"
               }`}
             />
 
-            <p className="text-[14px] w-[8rem]">
+            <p className="text-[14px] leading-snug flex-1 sm:flex-none sm:w-[8rem] max-w-full">
               {item.title}
             </p>
 
@@ -70,13 +78,13 @@ function ExperienceCard() {
 
       </div>
 
-      <div className="mt-20 rounded-2xl overflow-hidden">
+      <div className="mt-12 sm:mt-16 lg:mt-20 w-full max-w-[76rem] rounded-2xl overflow-hidden">
 
         <img
           key={activeExperience.id}
           src={activeExperience.image}
           alt={`experience-preview-${selected}`}
-          className="w-[76rem] animate-fade-in"
+          className="w-full h-auto block animate-fade-in"
         />
 
       </div>
