@@ -2,11 +2,7 @@ function Grid() {
   const styling =
     "rounded-2xl overflow-hidden bg-[#171717] border border-transparent hover:bg-[#222] hover:border-[#636363] hover:scale-101 duration-300";
 
-  // Below xl, every card is fluid and fills its grid cell (no fixed max-width,
-  // no centering), so edges and gaps stay aligned at any width.
-  // The fixed pixel sizes and manual offsets only apply at xl, where the
-  // 6 x 200px grid is used.
-  return (
+    return (
     <div className="grid w-full max-w-[80rem] mx-auto px-4 sm:px-6 xl:px-0 gap-4 grid-cols-2 sm:grid-cols-4 xl:grid-cols-[repeat(6,200px)]">
       <div
         className={`relative w-full aspect-square xl:justify-self-start xl:w-[150px] xl:h-[150px] xl:aspect-auto xl:ml-[2rem] ${styling}`}
