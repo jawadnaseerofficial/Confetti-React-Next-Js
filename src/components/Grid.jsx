@@ -30,7 +30,7 @@ function Grid() {
         <img
           src="images/grid/image3.png"
           alt="gridimage1"
-          className="ml-[3rem] mt-[7rem] object-cover scale-110 absolute bottom-2 max-w-[calc(100%-4rem)] xl:max-w-none"
+          className="ml-[4rem]  top-[9rem] sm:ml-[3rem] md:ml-[3rem] lg:ml-[3rem] xl:ml-[3rem] sm:top-[18rem] md:top-[14rem] lg:top-[14rem] xl:top-[2rem] object-cover lg:scale-120 xl:scale-120 md:scale-140 sm:scale-120 scale-150 absolute bottom-2 max-w-[calc(100%-4rem)] "
         />
         <p className="absolute bottom-[2rem] ml-[2rem] text-[12px] font-semibold">
           Unified cross-platform experience
